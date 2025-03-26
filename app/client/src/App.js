@@ -10,7 +10,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showEditButtons, setShowEditButtons] = useState(false);
-  const [bannerUrl, setBannerUrl] = useState("https://cdn.midjourney.com/60db0809-7d94-4935-aeba-26e970a7e71a/0_3.png");
+  const [bannerUrl, setBannerUrl] = useState("https://cdn.midjourney.com/11cffed4-8a58-41de-98ff-d0cbd01cc75a/0_2.png");
   const [bannerLoaded, setBannerLoaded] = useState(false);
   const [dominantColor, setDominantColor] = useState(null);
   const imageRef = useRef();
@@ -330,7 +330,7 @@ function App() {
               setTimeout(extractDominantColor, 100); // Slight delay to ensure image is fully loaded
             }}
             onError={(e) => {
-              e.target.src = "https://cdn.midjourney.com/60db0809-7d94-4935-aeba-26e970a7e71a/0_3.png";
+              e.target.src = "https://cdn.midjourney.com/11cffed4-8a58-41de-98ff-d0cbd01cc75a/0_2.png";
               setError("Banner image failed to load. Using default banner.");
               setBannerLoaded(true);
             }}

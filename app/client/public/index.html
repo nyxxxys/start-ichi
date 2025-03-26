@@ -14,7 +14,7 @@
     <!-- Font preload -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@200;300;400;500;600;700&family=Fira+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
     <!-- VantaJS dependencies -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
@@ -44,20 +44,6 @@
           );
           
           fontFaces.forEach(fontFace => 
-            fontFace.load().then(function(loadedFont) {
-              document.fonts.add(loadedFont);
-            }).catch(function(error) {
-              console.error('Error loading font:', error);
-            })
-          );
-
-          // Add Fira Mono font faces
-          const firaMonoWeights = [300, 400, 500];
-          const firaMonoFontFaces = firaMonoWeights.map(weight => 
-            new FontFace('Fira Mono', `url(https://fonts.gstatic.com/s/firamono/v14/N0bS2SlFPv1weGeLZDtgJv7S.woff2) format('woff2')`, { weight: `${weight}` })
-          );
-          
-          firaMonoFontFaces.forEach(fontFace => 
             fontFace.load().then(function(loadedFont) {
               document.fonts.add(loadedFont);
             }).catch(function(error) {

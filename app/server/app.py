@@ -3,7 +3,7 @@ import json
 import os
 from flask_cors import CORS
 
-app = Flask(__name__, static_folder="../client/build")
+app = Flask(__name__, static_folder=".", static_url_path="")
 CORS(app)  # Enable CORS for all routes
 
 # Define data directory relative to this file
@@ -25,7 +25,7 @@ if not os.path.exists(DATA_FILE):
 # Initialize banner JSON file if it doesn't exist
 if not os.path.exists(BANNER_FILE):
     with open(BANNER_FILE, "w") as f:
-        json.dump({"bannerUrl": "https://cdn.midjourney.com/60db0809-7d94-4935-aeba-26e970a7e71a/0_3.png"}, f)
+        json.dump({"bannerUrl": "https://cdn.midjourney.com/11cffed4-8a58-41de-98ff-d0cbd01cc75a/0_2.png"}, f)
 
 # Initialize config JSON file if it doesn't exist
 if not os.path.exists(CONFIG_FILE):
@@ -133,6 +133,8 @@ def delete_item(item_id):
 @app.route("/", defaults={"path": ""})
 @app.route("/<path:path>")
 def serve(path):
+    print(f"Serving path: {path}")
+    print(f"Static folder: {app.static_folder}")
     if path != "" and os.path.exists(os.path.join(app.static_folder, path)):
         return send_from_directory(app.static_folder, path)
     else:

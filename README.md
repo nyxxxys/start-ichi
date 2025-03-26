@@ -1,6 +1,12 @@
 # start:ichi - Minimal Terminal-Style Startpage
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Docker Image](https://img.shields.io/docker/pulls/dh1011/start-ichi.svg)](https://hub.docker.com/r/dh1011/start-ichi)
 
 A personal startpage with a terminal aesthetic. Organize your bookmarks with a clean, minimalist interface.
+
+## Demo
+
+[![Watch the demo](./demo.png)](https://youtu.be/DY1OeNu5axg)
 
 ## How to Run
 
@@ -17,13 +23,47 @@ For a full development environment (front and backend):
 - Windows: `run_react_dev.bat`
 - Unix/Linux/Mac: `./run_react_dev.sh`
 
-### Using Docker
-```
-docker build -t start-ichi .
-docker run -p 5000:5000 -v ./data:/app/data start-ichi
+Access the app at http://localhost:5000
+
+## Running with Docker
+
+### Using Docker Compose
+
+The easiest way to run the application is using Docker Compose:
+
+1. Make sure you have [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/) installed on your system.
+
+2. Run the application:
+```bash
+docker-compose up -d
 ```
 
-Access the app at http://localhost:5000
+3. The application will be available at `http://localhost:5000`
+
+4. To stop the application:
+```bash
+docker-compose down
+```
+
+### Using Docker directly
+
+Alternatively, you can run the container directly using Docker:
+
+```bash
+docker run -d \
+  -p 5000:5000 \
+  -v data:/app/server/data \
+  --name start-ichi \
+  dh1011/start-ichi:latest
+```
+
+The application will be available at `http://localhost:5000`
+
+To stop the container:
+```bash
+docker stop start-ichi
+docker rm start-ichi
+```
 
 ## Features
 
@@ -54,9 +94,9 @@ You can use any image URL for your banner. The app will:
 - Apply it to create a matching color theme
 - Support the following formats: PNG, JPG, JPEG, GIF, WebP
 
-Example banner URLs you can try:
-- https://cdn.midjourney.com/11cffed4-8a58-41de-98ff-d0cbd01cc75a/0_2.png
-- https://cdn.midjourney.com/60db0809-7d94-4935-aeba-26e970a7e71a/0_3.png
+Example banner URLs can be found in the banners/ directory of the repository:
+- https://github.com/dh1011/start-ichi/blob/main/banners/banner%20(1).png
+- https://github.com/dh1011/start-ichi/blob/main/banners/banner%20(2).png
 
 You can use any image URL from the web by pasting it in the configuration panel.
 
@@ -84,4 +124,4 @@ Click the `[configuration]` button to:
 3. Click `[edit links]` to modify or delete existing bookmarks
 4. Click `[configuration]` to customize the appearance
 
-Enjoy your minimal, aesthetically pleasing startpage! 
+
