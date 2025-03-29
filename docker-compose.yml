@@ -6,7 +6,7 @@ services:
     ports:
       - "5000:5000"
     volumes:
-      - data:/app/server/data
+      - data:/app/data
     environment:
       - FLASK_ENV=production
     restart: unless-stopped
