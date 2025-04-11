@@ -25,7 +25,13 @@ const ItemList = ({ items, onUpdateItem, onDeleteItem, showEditButtons }) => {
     // Check for port-only format (e.g., :8080)
     const portPattern = /^:\d+$/;
     
-    return urlPattern.test(url) || portPattern.test(url);
+    // Check for IP address with port (e.g., 192.168.1.11:1234)
+    const ipWithPortPattern = /^(\d{1,3}\.){3}\d{1,3}:\d+$/;
+    
+    // Check for http:// or https:// followed by IP address with port
+    const httpIpWithPortPattern = /^https?:\/\/(\d{1,3}\.){3}\d{1,3}:\d+(\/.*)?$/;
+    
+    return urlPattern.test(url) || portPattern.test(url) || ipWithPortPattern.test(url) || httpIpWithPortPattern.test(url);
   };
 
   const handleUpdate = () => {
